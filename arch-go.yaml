@@ -1,0 +1,25 @@
+version: 1
+threshold:
+  compliance: 100
+  coverage: 100
+dependenciesRules:
+  - package: "**.adapter.**"
+    shouldOnlyDependsOn:
+      internal:
+        - "**.service"
+        - "**.model.**"
+  - package: "**.adapter.**"
+    shouldNotDependsOn:
+      internal:
+        - "**.service.**"
+  - package: "**.service.**"
+    shouldOnlyDependsOn:
+      internal:
+        - "**.model.**"
+  - package: "**.service.**"
+    shouldNotDependsOn:
+      internal:
+        - "**.adapter.**"
+contentsRules:
+  - package: "**.service"
+    shouldOnlyContainInterfaces: true
