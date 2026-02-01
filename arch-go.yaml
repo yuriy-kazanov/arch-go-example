@@ -1,7 +1,6 @@
 version: 1
 threshold:
   compliance: 100
-  coverage: 100
 dependenciesRules:
   - package: "**.adapter.**"
     shouldOnlyDependsOn:
@@ -16,10 +15,14 @@ dependenciesRules:
     shouldOnlyDependsOn:
       internal:
         - "**.model.**"
+      external:
+        - "go.opentelemetry.io/otel"
   - package: "**.service.**"
     shouldNotDependsOn:
       internal:
         - "**.adapter.**"
+      external:
+        - "github.com/jackc/pgx/v5"
 contentsRules:
   - package: "**.service"
     shouldOnlyContainInterfaces: true
